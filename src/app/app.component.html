@@ -1,0 +1,21 @@
+<p> Try entering some @names below.</p>
+
+<!-- <textarea [(ngModel)]="getMentionName" type="text" [mention]="items"
+  [mentionConfig]="{ mentionSelect: onMentionSelect }" (closed)="closed($event)"
+  [ngClass]="isSelected ? 'after' : 'before'" [disabled]="isSelected"></textarea> -->
+  <textarea [(ngModel)]="getMentionName" type="text"
+  [mentionConfig]="mentionConfig" (closed)="closed($event)"
+  [ngClass]="isSelected ? 'after' : 'before'" [disabled]="isSelected"></textarea>
+<!-- {{ getMentionName }} -->
+<br>
+<button class="button-1" role="button" (click)="resetNote()">Reset</button>
+<!-- [mentionConfig]="mentionConfig" -->
+<p>Get details of the Name using @names. and print as username</p>
+<textarea type="text" [(ngModel)]="getSelectedUserName"  [mentionConfig]="{
+    items: getItems,
+    labelKey: 'name',
+    mentionSelect: onMentionSelectByName
+  }" [mentionListTemplate]="mentionListTemplate" ></textarea>
+<ng-template #mentionListTemplate let-item="item">
+  <span>{{item.username}} - {{ item.name }}</span>
+</ng-template>
